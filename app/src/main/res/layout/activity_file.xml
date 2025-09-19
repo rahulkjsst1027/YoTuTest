@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -85,13 +86,36 @@
 
 
     <!-- File / Folder List -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/fileRecyclerView"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        android:layout_height="0dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fileRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:listitem="@layout/item_file"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+
+        <!--<View
+            android:id="@+id/scrollbarThumb"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="end"
+            android:visibility="visible"
+            android:background="@drawable/scrollbar_thumb" />-->
+
+    </FrameLayout>
 
     <LinearLayout
         android:id="@+id/selectionBar"

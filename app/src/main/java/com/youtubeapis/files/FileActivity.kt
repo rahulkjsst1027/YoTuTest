@@ -37,8 +37,12 @@ import com.youtubeapis.files.FileClickHandler.isZip
 import com.youtubeapis.files.FileClickHandler.listFiles
 import com.youtubeapis.files.FileClickHandler.openFile
 import com.youtubeapis.files.FileClickHandler.rootPath
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.io.File
 
 class FileActivity : AppCompatActivity() {
@@ -130,11 +134,15 @@ class FileActivity : AppCompatActivity() {
         )
         binding.fileRecyclerView.apply {
             setHasFixedSize(true) // agar item ka size fix hai (height/width)
-            itemAnimator = null   // unnecessary animations hatane ke liye
-            setItemViewCacheSize(10) // jitne items cache karna chahte ho (by default 2–3)
-            recycledViewPool.setMaxRecycledViews(0, 20) // ek type ke 20 items cache
+           // itemAnimator = null   // unnecessary animations hatane ke liye
+            setItemViewCacheSize(2) // jitne items cache karna chahte ho (by default 2–3)
+            recycledViewPool.setMaxRecycledViews(0, 5) // ek type ke 5 items cache
         }
+        binding.fileRecyclerView.isVerticalScrollBarEnabled = true
+        ViewCompat.setScrollIndicators(binding.fileRecyclerView, ViewCompat.SCROLL_INDICATOR_RIGHT)
         binding.fileRecyclerView.adapter = adapter
+
+
 
 
         checkStoragePermission()
@@ -198,7 +206,7 @@ class FileActivity : AppCompatActivity() {
     }
     private var currentOrder = SortOrder.ASCENDING
     private fun sortAndOrder(option: SortOption){
-        adapter.setSortOption(option, currentOrder, binding.fileRecyclerView)
+        adapter.setSortOption(option, currentOrder, binding.fileRecyclerView, binding.progressBar)
     }
     private fun updateTopCheckBox() {
         binding.fileCheckBox.setOnCheckedChangeListener(null)
@@ -254,7 +262,7 @@ class FileActivity : AppCompatActivity() {
     }
 
 
-    private fun updateFiles() {
+    private fun updateFiles2() {
 
         binding.pathTextView.isSingleLine = true
         binding.pathTextView.ellipsize = TextUtils.TruncateAt.START
@@ -273,13 +281,55 @@ class FileActivity : AppCompatActivity() {
                 delay(30) // UI ko smooth rakhe
             }
 
-           /* val chunkSize = 100
-            allFiles.chunked(chunkSize).forEach { chunk ->
-                adapter.updateFiles(chunk) // append kar rahe hain
-                delay(50) // UI ko freeze hone se bachaye
-            }*/
         }
     }
+
+
+    private var loadJob: Job? = null
+    private fun updateFiles() {
+        binding.pathTextView.isSingleLine = true
+        binding.pathTextView.ellipsize = TextUtils.TruncateAt.START
+        binding.pathTextView.text = getBreadcrumb(currentDir, rootPath)
+       // Cancel previous loading if any
+        loadJob?.cancel()
+        loadJob =  lifecycleScope.launch {
+            // 👇 loader show
+            binding.progressBar.visibility = View.VISIBLE
+           // binding.fileRecyclerView.visibility = View.GONE
+
+            val allFiles = listFiles(currentDir)
+            adapter.clearFiles()
+
+            val chunkSize = 100
+            var currentList = emptyList<File>()
+
+            allFiles.chunked(chunkSize).forEach { chunk ->
+                // 1️⃣ Heavy work in background thread
+                val processedChunk = withContext(Dispatchers.Default) {
+                    chunk.map { it }
+                }
+// Cancel check → if Activity destroyed or job cancelled
+                if (!isActive) return@launch
+                // 2️⃣ Adapter update in Main thread
+                withContext(Dispatchers.Main) {
+                    currentList = currentList + processedChunk
+                    adapter.updateFiles(currentList)
+                }
+
+                // 3️⃣ Optional minimal delay for UI smoothness
+                delay(0) // ya 0, device ke hisaab se
+            }
+
+            // Cancel check before hiding loader
+            if (isActive) {
+                binding.progressBar.visibility = View.GONE
+            }
+            // 👇 loader hide
+           // binding.progressBar.visibility = View.GONE
+           // binding.fileRecyclerView.visibility = View.VISIBLE
+        }
+    }
+
 
 
     private fun showSelectionUI() {

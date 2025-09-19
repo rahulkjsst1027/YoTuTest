@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -16,7 +17,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.MultiTransformation
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.youtubeapis.R
@@ -137,8 +137,8 @@ class FileAdapter(
                 Glide.with(context)
                     .load(Uri.fromFile(file))
                     .override(100, 100)
-                    .diskCacheStrategy(DiskCacheStrategy.ALL) // cache original + resized
-                    .skipMemoryCache(false)
+                    //.diskCacheStrategy(DiskCacheStrategy.ALL) // cache original + resized
+                    //.skipMemoryCache(false)
                     .transform(MultiTransformation(CenterCrop(), RoundedCorners(16)))
                     .placeholder(R.drawable.picture)
                     .into(holder.fileIcon)
@@ -146,8 +146,8 @@ class FileAdapter(
                 Glide.with(context)
                     .load(Uri.fromFile(file))
                     .override(100, 100)
-                    .diskCacheStrategy(DiskCacheStrategy.ALL) // cache original + resized
-                    .skipMemoryCache(false)
+                   // .diskCacheStrategy(DiskCacheStrategy.ALL) // cache original + resized
+                   // .skipMemoryCache(false)
                     .transform(MultiTransformation(CenterCrop(), RoundedCorners(16)))
                     .placeholder(R.drawable.picture)
                     .into(holder.fileIcon)
@@ -257,7 +257,8 @@ class FileAdapter(
     fun setSortOption(
         option: SortOption,
         order: SortOrder = currentOrder,
-        recyclerView: RecyclerView
+        recyclerView: RecyclerView,
+        progressBar: ProgressBar // 👈 pass karo loader
     ) {
         val layoutManager = recyclerView.layoutManager as LinearLayoutManager
         val visiblePos = layoutManager.findFirstVisibleItemPosition()
@@ -268,6 +269,10 @@ class FileAdapter(
 
         (recyclerView.context as? AppCompatActivity)?.lifecycleScope?.launch {
             val currentList = differ.currentList.toList() // immutable copy
+
+            // 👇 loader show before sorting
+            progressBar.visibility = View.VISIBLE
+           // recyclerView.visibility = View.GONE
 
             val sortedList = withContext(Dispatchers.Default) {
                 val comparator = when (currentSort) {
@@ -298,6 +303,10 @@ class FileAdapter(
                 differ.submitList(ArrayList(sortedList)) { // ✅ force new instance
                     selectedFiles.retainAll(sortedList.toSet())
                     layoutManager.scrollToPositionWithOffset(visiblePos, offset)
+
+                    // 👇 loader hide after sorted list applied
+                    progressBar.visibility = View.GONE
+                   // recyclerView.visibility = View.VISIBLE
                 }
             }
             // update adapter
