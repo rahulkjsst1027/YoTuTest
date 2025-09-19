@@ -42,16 +42,23 @@ class LuckyWheelActivity : AppCompatActivity() {
         lw?.setLuckyWheelReachTheTarget(object : OnLuckyWheelReachTheTarget{
             override fun onReachTarget(index : Int) {
                 Log.i("TAG", "onReachTarget: $index")
+                //val safeIndex = if (index <= 0) 0 else index - 1
+                val label = if (wheelItems!![index].text == "10") {
+                    wheelItems!![index].text
+                } else {
+                    wheelItems!![index].text
+                }
                 Toast.makeText(
                     this@LuckyWheelActivity,
-                    "Target Reached ${wheelItems!![index-1].text}",
+                    "Target Reached ${label}",
                     Toast.LENGTH_LONG
                 ).show()
+
             }
         })
 
         val oneIndexes = wheelItems?.mapIndexed { index, item ->
-            if (item.text == "10") 0 else index
+            /*if (item.text == "10") 0 else*/ index
         }
 
 

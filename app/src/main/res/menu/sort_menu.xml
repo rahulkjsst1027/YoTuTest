@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/sort_name"
+        android:title="Name" />
+    <item
+        android:id="@+id/sort_date"
+        android:title="Date" />
+    <item
+        android:id="@+id/sort_type"
+        android:title="Type" />
+    <item
+        android:id="@+id/sort_size"
+        android:title="Size" />
+</menu>

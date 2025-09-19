@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="open_emi"
+        android:enabled="true"
+        android:icon="@drawable/marketing"
+        android:shortcutShortLabel="@string/short_label_emi"
+        android:shortcutLongLabel="@string/long_label_emi"
+        tools:targetApi="n_mr1">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.youtubeapis"
+            android:targetClass="com.youtubeapis.MainActivity" />
+    </shortcut>
+</shortcuts>

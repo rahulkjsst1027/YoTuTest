@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/controllerViewContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#99000000"
+    android:layoutDirection="ltr">
+
+    <!-- Lock overlay -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/lockOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/lockIcon"
+            style="@style/ExoStyledControls.Button.Bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/baseline_lock_outline_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
+
+        <androidx.media3.ui.DefaultTimeBar
+            android:id="@+id/exo_progress1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            app:bar_height="1dp"
+            app:buffered_color="@color/red"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:scrubber_color="@color/transparent"
+            app:scrubber_disabled_size="0dp"
+            app:scrubber_dragged_size="0dp"
+            app:scrubber_enabled_size="0dp"
+            app:touch_target_height="5dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/controllerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+
+        <LinearLayout
+            android:id="@+id/top_controls"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/exo_back"
+                style="@style/ExoStyledControls.Button.Bottom"
+                android:src="@drawable/ic_back"
+                app:tint="@color/white" />
+
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:singleLine="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:scrollHorizontally="true"
+                android:freezesText="true"
+                android:textColor="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/exo_quality"
+                style="@style/ExoStyledControls.Button.Bottom"
+                android:src="@drawable/ic_quility"
+                app:tint="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/exo_more"
+                style="@style/ExoStyledControls.Button.Bottom"
+                android:src="@drawable/more"
+                app:tint="@color/white" />
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/exo_play_pause"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bottomBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/layoutTimer"
+                android:layout_width="match_parent"
+                android:layout_height="26dp"
+                android:gravity="center_vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/exo_position"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <androidx.media3.ui.DefaultTimeBar
+                    android:id="@+id/exo_progress"
+                    android:layout_width="0dp"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    app:buffered_color="@color/red" />
+
+                <TextView
+                    android:id="@+id/exo_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="end"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/layoutTimer">
+
+                <!-- <androidx.appcompat.widget.AppCompatImageView
+                     android:id="@+id/exo_play_pausex"
+                     style="@style/ExoStyledControls.Button.Bottom" />
+     -->
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/exo_share"
+                    style="@style/ExoStyledControls.Button.Bottom.CC"
+                    android:layout_marginStart="0dp"
+                    android:src="@drawable/share"
+                    app:tint="@color/white" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/exo_at"
+                    style="@style/ExoStyledControls.Button.Bottom.CC"
+                    android:layout_marginStart="0dp"
+                    android:src="@drawable/quantum_ic_art_track_grey600_48"
+                    app:tint="@color/white" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/exo_audio_track"
+                    style="@style/ExoStyledControls.Button.Bottom.AudioTrack" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/exo_playback_speed1"
+                    style="@style/ExoStyledControls.Button.Bottom.PlaybackSpeed"
+                    app:tint="@color/white" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/exo_mini"
+                    style="@style/ExoStyledControls.Button.Bottom"
+                    android:src="@drawable/ic_mini_player"
+                    app:tint="@color/white" />
+
+
+                <!--   <ImageButton
+                       android:id="@+id/exo_shuffle"
+                       style="@style/ExoStyledControls.Button.Bottom.Shuffle"
+                       android:layout_marginStart="0dp"
+                       />
+                   <ImageButton
+                       android:id="@+id/exo_vr"
+                       style="@style/ExoStyledControls.Button.Bottom.VR"
+                       android:layout_marginStart="0dp"
+                       />-->
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/exo_fullscreen_exit"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_fullscreen"
+                    app:tint="@android:color/white" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/openLock"
+            style="@style/ExoStyledControls.Button.Bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/baseline_lock_open"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--&lt;!&ndash; Ads overlay &ndash;&gt;
+    <FrameLayout
+        android:id="@+id/adOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"/>-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

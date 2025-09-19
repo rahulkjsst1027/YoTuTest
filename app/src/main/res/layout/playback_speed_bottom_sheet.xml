@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <View
+        android:id="@+id/bar"
+        android:layout_width="56dp"
+        android:layout_height="4dp"
+        android:background="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="1X"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- SeekBar with - and + -->
+    <LinearLayout
+        android:id="@+id/speedLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/decreaseSpeed"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:tint="?attr/colorOnBackground"
+            android:src="@drawable/baseline_remove_circle_24" />
+
+        <androidx.appcompat.widget.AppCompatSeekBar
+            android:id="@+id/speedSeekBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:max="100"
+            android:thumbTint="?attr/colorOnBackground"
+            android:progressTint="?attr/colorOnBackground"
+            android:progress="20" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/increaseSpeed"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:tint="?attr/colorOnBackground"
+            android:src="@drawable/outline_add_circle_24" />
+    </LinearLayout>
+
+    <!-- Speed Buttons -->
+    <LinearLayout
+        android:id="@+id/speedButtons"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/speedLayout">
+
+        <TextView
+            android:id="@+id/speed1x"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_weight="1"
+            android:background="@drawable/draw_round"
+            android:gravity="center"
+            android:text="1.0"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/speed125x"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/draw_round"
+            android:gravity="center"
+            android:text="1.25"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/speed15x"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/draw_round"
+            android:gravity="center"
+            android:text="1.5"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/speed2x"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/draw_round"
+            android:gravity="center"
+            android:text="2.0"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/speed3x"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/draw_round"
+            android:gravity="center"
+            android:text="3.0"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

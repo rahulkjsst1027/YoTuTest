@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- For internal app-specific external storage -->
+    <external-files-path name="external_files" path="." />
+    <!-- For public Download folder -->
+    <external-path name="downloads" path="Download/" />
+    <external-path name="external_files" path="."/>
+</paths>

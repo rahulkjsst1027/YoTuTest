@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <!-- Scale Title -->
+    <TextView
+        android:id="@+id/scaleTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scale"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Scale Row -->
+    <LinearLayout
+        android:id="@+id/scaleLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scaleTitle"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:id="@+id/scaleFit"
+            style="@style/SheetButton"
+            android:text="Fit" />
+
+        <TextView
+            android:id="@+id/scaleFill"
+            style="@style/SheetButton"
+            android:layout_marginStart="8dp"
+            android:text="Fill" />
+
+        <TextView
+            android:id="@+id/scaleCrop"
+            style="@style/SheetButton"
+            android:layout_marginStart="8dp"
+            android:text="Crop" />
+
+        <TextView
+            android:id="@+id/scale1_1"
+            style="@style/SheetButton"
+            android:layout_marginStart="8dp"
+            android:text="1:1" />
+    </LinearLayout>
+
+    <!-- Playback Speed Title -->
+    <TextView
+        android:id="@+id/speedTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Playback Speed"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/scaleLayout"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Speed Grid -->
+    <GridLayout
+        android:id="@+id/speedGrid"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:columnCount="4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/speedTitle">
+
+        <TextView
+            android:id="@+id/speed05"
+            style="@style/SheetButton2"
+            android:text="0.5x" />
+
+        <TextView
+            android:id="@+id/speed075"
+            style="@style/SheetButton2"
+            android:text="0.75x" />
+
+        <TextView
+            android:id="@+id/speed1"
+            style="@style/SheetButton2"
+            android:text="1x" />
+
+        <TextView
+            android:id="@+id/speed125"
+            style="@style/SheetButton2"
+            android:text="1.25x" />
+
+        <TextView
+            android:id="@+id/speed15"
+            style="@style/SheetButton2"
+            android:text="1.5x" />
+
+        <TextView
+            android:id="@+id/speed2"
+            style="@style/SheetButton2"
+            android:text="2x" />
+
+        <TextView
+            android:id="@+id/speed3"
+            style="@style/SheetButton2"
+            android:text="3x" />
+
+        <TextView
+            android:id="@+id/speedModify"
+            style="@style/SheetButton2"
+            android:text="Modify" />
+    </GridLayout>
+
+    <!-- Divider under Playback Speed -->
+    <View
+        android:id="@+id/dividerSpeed"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintTop_toBottomOf="@id/speedGrid"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Volume -->
+    <LinearLayout
+        android:id="@+id/volumeLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dividerSpeed">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/volumeMute"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            app:tint="?attr/colorOnBackground"
+            android:src="@drawable/baseline_volume_off_24" />
+
+        <androidx.appcompat.widget.AppCompatSeekBar
+            android:id="@+id/volumeSeek"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:thumbTint="?attr/colorOnBackground"
+            android:progressTint="?attr/colorOnBackground"
+            android:max="100" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/volumeHigh"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_volume"
+            app:tint="?attr/colorOnBackground" />
+    </LinearLayout>
+
+    <!-- Brightness -->
+    <LinearLayout
+        android:id="@+id/brightnessLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/volumeLayout">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/brightnessLow"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            app:tint="?attr/colorOnBackground"
+            android:src="@drawable/ic_brightness_low" />
+
+        <androidx.appcompat.widget.AppCompatSeekBar
+            android:id="@+id/brightnessSeek"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:thumbTint="?attr/colorOnBackground"
+            android:progressTint="?attr/colorOnBackground"
+            android:max="100" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/brightnessHigh"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            app:tint="?attr/colorOnBackground"
+            android:src="@drawable/ic_brightness_high" />
+    </LinearLayout>
+
+    <!-- Bottom Divider -->
+    <View
+        android:id="@+id/dividerBottom"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintTop_toBottomOf="@id/brightnessLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

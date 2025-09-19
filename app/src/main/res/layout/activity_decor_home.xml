@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:id="@+id/main"
+    android:padding="16dp">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:layout_marginTop="24dp"
+            android:id="@+id/etHouseLength"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="House Length (feet)"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/etGap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Gap (feet)"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/etHang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Hang Length (feet)"
+            android:inputType="numberDecimal" />
+
+        <Button
+            android:id="@+id/btnCalculate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Calculate String Length" />
+
+        <TextView
+            android:id="@+id/tvResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Result will show here"
+            android:paddingTop="20dp"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Paint / Wall Colour Calculator"
+            android:paddingTop="24dp"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- Unit Selector -->
+        <Spinner
+            android:id="@+id/spinnerUnits"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/units_array" />
+
+        <!-- Paint Type Selector -->
+        <Spinner
+            android:id="@+id/spinnerPaintType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/paint_types_array" />
+
+        <EditText
+            android:id="@+id/etLength"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Length"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/etWidth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Width"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/etHeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Height"
+            android:inputType="numberDecimal" />
+
+        <CheckBox
+            android:id="@+id/cbIncludeCeiling"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Include Ceiling in Paint"
+            android:checked="true" />
+
+        <Button
+            android:id="@+id/btnCalculatePaint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Calculate Paint" />
+
+        <TextView
+            android:id="@+id/tvPaintResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Result will show here"
+            android:paddingTop="20dp"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+
+
+        <TextView
+            android:id="@+id/tvNoiseLevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Noise Level: 0 dB"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingVertical="16dp" />
+
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start Measuring" />
+
+        <Button
+            android:id="@+id/btnStop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stop Measuring"
+            android:visibility="gone" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+</androidx.core.widget.NestedScrollView>

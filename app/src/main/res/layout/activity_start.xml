@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/main"
+    android:layout_height="match_parent">
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnFile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="File" />
+
+        <Button
+            android:id="@+id/btnFlash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Flash" />
+
+        <Button
+            android:id="@+id/btnWeb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Web" />
+
+        <Button
+            android:id="@+id/btnWheel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Wheel" />
+
+        <Button
+            android:id="@+id/btnMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NotificationAccess and YT Video Fetch" />
+
+        <Button
+            android:id="@+id/btnStack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Stack" />
+
+        <Button
+            android:id="@+id/btnDecor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Decor" />
+
+
+        <Button
+            android:id="@+id/btnVPN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="VPN" />
+
+        <Button
+            android:id="@+id/btnOther"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Other" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.core.widget.NestedScrollView>

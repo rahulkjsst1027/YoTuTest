@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+    <!-- PlayerView with built-in controller -->
+    <androidx.media3.ui.PlayerView
+        android:id="@+id/playerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:resize_mode="fit"
+        app:surface_type="texture_view"
+        app:show_buffering="when_playing"
+        app:animation_enabled="false"
+        app:show_timeout="2000"
+        app:ad_marker_width="10dp"
+        app:ad_marker_color="#FFC107"
+        app:controller_layout_id="@layout/exo_player_custom_controller"
+        app:use_controller="true" />
+
+    <!-- Custom Brightness and Volume Indicators -->
+    <LinearLayout
+        android:id="@+id/brightnessIndicator"
+        android:layout_width="40dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/draw_round"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_brightness"
+            app:tint="@color/white" />
+
+        <com.youtubeapis.files.ObservableProgressBar
+            android:id="@+id/brightnessBar"
+            style="@style/Widget.ProgressBar.Vertical"
+            android:layout_width="4dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:max="100"
+            android:progress="100" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/volumeIndicator"
+        android:layout_width="40dp"
+        android:layout_height="150dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/draw_round"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:gravity="center"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_volume" />
+
+        <com.youtubeapis.files.ObservableProgressBar
+            android:id="@+id/volumeBar"
+            style="@style/Widget.ProgressBar.Vertical"
+            android:layout_width="4dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:max="100"
+            android:progress="100" />
+    </LinearLayout>
+
+    <!-- Seek Indicator -->
+    <TextView
+        android:id="@+id/seekIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/draw_round"
+        android:padding="10dp"
+        tools:text="+10s"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:visibility="invisible"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <!-- Left rewind overlay -->
+    <FrameLayout
+        android:id="@+id/leftRewindOverlay"
+        android:layout_width="160dp"
+        android:layout_height="300dp"
+        android:background="@drawable/circle_bg_alpha_lest"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_gravity="center"
+            android:id="@+id/ivRewind"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/baseline_fast_rewind_24"
+            app:tint="@android:color/white" />
+    </FrameLayout>
+
+    <!-- Right forward overlay -->
+    <FrameLayout
+        android:id="@+id/rightForwardOverlay"
+        android:layout_width="160dp"
+        android:layout_height="300dp"
+        android:background="@drawable/circle_bg_alpha_right"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_gravity="center"
+            android:id="@+id/ivForward"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_fastforward"
+            app:tint="@android:color/white" />
+    </FrameLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/fastSeekIndicator"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:padding="8dp"
+        android:layout_marginStart="100dp"
+        android:visibility="gone"
+        android:background="@drawable/draw_round"
+        android:src="@drawable/ic_fastforward"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

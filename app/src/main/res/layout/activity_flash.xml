@@ -1,0 +1,118 @@
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <Button
+            android:id="@+id/btnBlink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Blink" />
+
+        <Button
+            android:id="@+id/btnFastBlink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fast Blink" />
+
+        <Button
+            android:id="@+id/btnSlowBlink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Slow Blink" />
+
+        <Button
+            android:id="@+id/btnSOS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SOS" />
+
+        <Button
+            android:id="@+id/btnStrobe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Strobe" />
+
+        <Button
+            android:id="@+id/btnPolice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Police" />
+
+        <Button
+            android:id="@+id/btnHeartbeat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Heartbeat" />
+
+        <Button
+            android:id="@+id/btnBreathing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Breathing" />
+
+        <Button
+            android:id="@+id/btnRandom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Random Blink" />
+
+        <Button
+            android:id="@+id/btnEmergency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Emergency Beacon" />
+
+        <Button
+            android:id="@+id/btnCountdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Countdown (10s)" />
+
+        <Button
+            android:id="@+id/btnMorse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Morse (SOS HELP)" />
+
+        <androidx.appcompat.widget.AppCompatSeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16sp" />
+
+        <Button
+            android:id="@+id/btnStop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FF4444"
+            android:text="STOP"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnOn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FF4444"
+            android:text="ON"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:layout_marginTop="16sp"
+            android:id="@+id/call"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FF4444"
+            android:text="Call/MSG"
+            android:textColor="#FFFFFF" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.core.widget.NestedScrollView>

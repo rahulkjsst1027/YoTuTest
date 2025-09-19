@@ -20,5 +20,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Youtube Apis"
+rootProject.name = "Android Apis"
 include(":app")
